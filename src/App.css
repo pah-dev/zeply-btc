@@ -1,38 +1,327 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap");
+
+:root {
+  --brand-color_1: #0dcaf0;
+  --brand-color_2: #068aa5;
+  --brand-color_3: #282c34;
+  --brand-color_4: #3e3e3e;
+  --brand-color_5: #212529;
+  --brand-color_6: #dfe3eb;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--brand-color_3);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body * {
+  font-size: calc(0.5rem + 2vmin);
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
+  position: absolute;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  width: 100%;
+  display: block;
+  background-color: var(--brand-color_1);
+  font-family: Ubuntu, "Helvetica Neue", sans-serif;
+}
+
+.app-header {
+  margin-bottom: 2rem;
+}
+
+.app-title {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: calc(1.5rem + 2vmin);
+}
+
+.app-logo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.app-logo figure {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.app-logo figure img {
+  width: 35vh;
+  max-width: 35%;
+}
+
+.app-content {
+  width: 98%;
+  max-width: 98%;
+  background-color: var(--brand-color_3);
+  min-height: 94vh;
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--brand-color_6);
 }
 
-.App-link {
-  color: #61dafb;
+.app-footer {
+  width: 98%;
+  max-width: 98%;
+  background-color: var(--brand-color_3);
+  min-height: 6vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-color_6);
+  border-top: 1px solid var(--brand-color_1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.app-link {
+  color: var(--brand-color_1);
+}
+
+.app-component {
+  display: block;
+  box-sizing: border-box;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: inherit;
+}
+
+.search {
+  margin-bottom: 2rem;
+}
+
+.search-title {
+  text-align: center;
+}
+
+.search-btns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-btns a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+  /* margin: auto; */
+  margin-top: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+/* .address-content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: block;
+  box-sizing: border-box;
+} */
+
+.btn-search {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+  margin-top: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.result-title {
+  font-size: calc(1.2rem + 2vmin);
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.address-card {
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card-header {
+  display: block;
+  background-color: var(--brand-color_4);
+}
+
+.address-fav {
+  position: absolute;
+  width: auto;
+}
+
+.address-title {
+  display: flex;
+  justify-content: center;
+  font-size: calc(0.8rem + 2vmin);
+}
+
+.address-hash {
+  margin: auto;
+  text-align: center;
+  margin-top: 0.8rem;
+  font-weight: lighter;
+}
+
+.row-detail {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid var(--brand-color_6);
+}
+
+.item-detail {
+  width: 50%;
+}
+
+.btn-fav {
+  background-color: #ffffff00;
+  width: auto;
+  border: none;
+}
+
+.btn-view {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+select#currency option[value="BTC"] {
+  background-image: url("../public/btc-icon.svg");
+}
+select#currency option[value="EUR"] {
+  background-image: url("../public/eur-icon.svg");
+}
+select#currency option[value="USD"] {
+  background-image: url("../public/usd-icon.svg");
+}
+
+.separator {
+  border-top: 1px solid var(--brand-color_1);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.drop-currency {
+  width: 30%;
+  max-width: 10rem;
+}
+
+.border-info {
+  border-color: var(--brand-color_1) !important;
+}
+
+.btn-info {
+  background-color: var(--brand-color_1);
+  border-color: var(--brand-color_2);
+  color: var(--brand-color_5);
+}
+
+.btn-dark {
+  background-color: var(--brand-color_1);
+  border-color: var(--brand-color_2);
+  color: var(--brand-color_5);
+}
+
+.dropdown-menu {
+  background-color: var(--brand-color_5);
+  width: 30%;
+}
+
+.dropdown-item {
+  color: var(--brand-color_2);
+}
+
+.dropdown-item:active,
+.dropdown-item:focus,
+.dropdown-item:hover {
+  background-color: var(--brand-color_2);
+  color: var(--brand-color_3);
+}
+
+.drop-item img {
+  width: 20%;
+  margin-right: 1rem;
+}
+
+.fav-line {
+  display: block;
+  width: 80vw;
+  height: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fav-line a {
+  text-decoration: none;
+  color: var(--brand-color_6);
+}
+
+/* START SPINNER */
+.lds-ring {
+  display: flex;
+  align-items: center;
+  height: 37px;
+  padding-top: 15px;
+  text-align: center;
+  justify-content: center;
+  margin: 0px auto;
+}
+
+.lds-ring div {
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 20px;
+  margin: 37px 10px 10px;
+  animation: 0.75s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s infinite alternate
+    none running bouncer;
+}
+
+.lds-ring div:nth-child(5n + 1) {
+  background-color: var(--brand-color_1);
+}
+.lds-ring div:nth-child(5n + 2) {
+  animation-delay: calc(0.1s);
+  background-color: var(--brand-color_2);
+}
+.lds-ring div:nth-child(5n + 3) {
+  animation-delay: calc(0.2s);
+  background-color: var(--brand-color_1);
+}
+.lds-ring div:nth-child(5n + 4) {
+  animation-delay: calc(0.3s);
+  background-color: var(--brand-color_2);
+}
+
+@keyframes bouncer {
+  100% {
+    transform: scale(1.75) translateY(-20px);
   }
 }
+/* END SPINNER */
