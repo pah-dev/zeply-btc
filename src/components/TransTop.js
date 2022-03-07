@@ -19,7 +19,7 @@ export default function TransTop() {
               <table>
                 <tbody>
                   {data.map((txs) => (
-                    <tr>
+                    <tr key={txs.hash}>
                       <td className="fav-line">
                         {">  "}
                         <a href={`/transaction/${txs.hash}`}>{txs.hash}</a>

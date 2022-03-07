@@ -6,11 +6,8 @@ export default function setVisit(hash, key) {
 
   fetch(url, {
     crossDomain: true,
-    method: "PUT",
-    mode: "cors",
+    method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
-  }).then((res) => {
-    console.log("Request complete! response:", res);
   });
 }
