@@ -19,7 +19,7 @@ export default function AddressTop() {
               <table>
                 <tbody>
                   {data.map((addr) => (
-                    <tr>
+                    <tr key={addr.hash}>
                       <td className="fav-line">
                         {">  "}
                         <a href={`/address/${addr.hash}`}>{addr.hash}</a>

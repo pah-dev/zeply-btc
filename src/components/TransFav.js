@@ -4,11 +4,6 @@ import getFavs from "../services/getFavs";
 export default function TransFav() {
   const [data, setTrans] = useState([]);
 
-  //   const handleChange = (e) => {
-  //     setAddrs(e.target.value);
-  //     console.log({ value: e.target.value });
-  //   };
-
   useEffect(function () {
     const resp = getFavs("T");
     setTrans(resp);
@@ -25,7 +20,7 @@ export default function TransFav() {
               <table>
                 <tbody>
                   {data.map((txs) => (
-                    <tr>
+                    <tr key={txs.hash}>
                       <td className="fav-line">
                         {">  "}
                         <a href={`/transaction/${txs.hash}`}>{txs.hash}</a>

@@ -56,7 +56,7 @@ export default function Footer() {
           onSelect={handleChange}
         >
           {currencies.map((cur) => (
-            <Dropdown.Item eventKey={cur.id}>
+            <Dropdown.Item eventKey={cur.id} key={cur.id}>
               <div className="drop-item">
                 <img
                   className="drop-img"

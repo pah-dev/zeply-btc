@@ -42,18 +42,13 @@ function SetStateAndToggle({ params }) {
 
   const toggleFavorite = (params) => {
     setFavorite((favorite) => {
+      const jsonData = localStorage.getItem("zeply-favs");
+      const data = JSON.parse(jsonData);
       if (favorite === true) {
-        const jsonData = localStorage.getItem("zeply-favs");
-        const data = JSON.parse(jsonData);
-        data.splice(
-          data.findIndex((e) => e.hash === params.hash),
-          1
-        );
-        localStorage.setItem("zeply-favs", JSON.stringify(data));
+        let newData = data.filter((e) => e.hash !== params.hash);
+        localStorage.setItem("zeply-favs", JSON.stringify(newData));
       }
       if (favorite === false) {
-        const jsonData = localStorage.getItem("zeply-favs");
-        const data = JSON.parse(jsonData);
         const date = new Date();
         const newElement = {
           hash: params.hash,
@@ -66,10 +61,7 @@ function SetStateAndToggle({ params }) {
         } else {
           localStorage.setItem("zeply-favs", JSON.stringify([newElement]));
         }
-      }
-
-      if (favorite === false) {
-        setMessage("Subscribed to the address " + params.hash);
+        setMessage("Subscribed to address " + params.hash);
       }
 
       return !favorite;
@@ -79,8 +71,8 @@ function SetStateAndToggle({ params }) {
   return (
     <div>
       {message !== "" ? (
-        <FlashMessage duration={4000} persistOnHover={true}>
-          <div class="alert alert-info alert-fav" role="alert">
+        <FlashMessage duration={2000} persistOnHover={true}>
+          <div className="alert alert-info alert-fav" role="alert">
             {message}
           </div>
         </FlashMessage>

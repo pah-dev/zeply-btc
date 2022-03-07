@@ -5,7 +5,6 @@ export default function Search() {
 
   const handleChange = (e) => {
     setHash(e.target.value);
-    console.log({ value: e.target.value });
   };
 
   return (

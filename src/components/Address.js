@@ -34,9 +34,12 @@ export default function Address({ params }) {
       <div className="separator"></div>
       <div className="result-title">ADDRESS</div>
       <div className="separator"></div>
-      {resp.data ? (
-        <section className="address-content">
-          <div className="card bg-dark border-info address-card">
+      <section className="address-content">
+        {resp.data ? (
+          <div
+            className="card bg-dark border-info address-card"
+            key={resp.data.address}
+          >
             <div className="card-header">
               <div>
                 <div className="address-fav">
@@ -96,17 +99,17 @@ export default function Address({ params }) {
               </div>
             </div>
           </div>
-        </section>
-      ) : (
-        <div>
-          <div className="search-title">{resp.data}</div>
-          <div className="btn-notfound">
-            <a href={"/"} className="btn btn-info btn-view">
-              Go back
-            </a>
+        ) : (
+          <div>
+            <div className="search-title">{resp.data}</div>
+            <div className="btn-notfound">
+              <a href={"/"} className="btn btn-info btn-view">
+                Go back
+              </a>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </section>
     </div>
   );
 }

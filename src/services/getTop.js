@@ -12,7 +12,6 @@ export default function getTop(key) {
     .then((res) => res.json())
     .then((response) => {
       const data = response;
-      console.log(data);
       return data;
     });
 }

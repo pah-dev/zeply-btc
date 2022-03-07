@@ -51,7 +51,10 @@ export default function Trans({ params }) {
       {resp.data && !resp.data[0].error ? (
         <section className="address-content">
           {resp.data.map((trans) => (
-            <div className="card bg-dark border-info address-card">
+            <div
+              className="card bg-dark border-info address-card"
+              key={trans.hash}
+            >
               <div className="card-header">
                 <div>
                   <div className="address-fav">
