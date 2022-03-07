@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FlashMessage from "react-flash-message";
 
 export default function FavoriteButton({ params }) {
   return <FindInitialState params={params} />;
@@ -8,14 +9,9 @@ function FindInitialState({ params }) {
   let isFav = false;
   const jsonData = localStorage.getItem("zeply-favs");
   const data = JSON.parse(jsonData);
-  console.log(data);
   if (data) {
-    console.log(params.hash);
-    console.log("data");
     const getFav = data.find((e) => e.hash === params.hash);
-    console.log(getFav);
     isFav = getFav ? true : false;
-    console.log(isFav);
   }
   const newParams = { hash: params.hash, type: params.type, fav: isFav };
 
@@ -23,6 +19,8 @@ function FindInitialState({ params }) {
 }
 
 function SetStateAndToggle({ params }) {
+  const [message, setMessage] = useState("");
+  const [favorite, setFavorite] = useState(params.fav);
   const currentlyAFavorite = (
     <img
       className="drop-img"
@@ -42,24 +40,7 @@ function SetStateAndToggle({ params }) {
     />
   );
 
-  const [favorite, setFavorite] = useState(params.fav);
-
   const toggleFavorite = (params) => {
-    // this sets the state for my selected recipes (adds/ removes)
-    // setFavorite((favorite) => {
-    //   if (favorite == true) {
-    //     console.log("I clicked unfavorite")
-    //     console.log(params)
-    //     fetch(`/api/users/${params.userId}/recipes/${recipeId}/remove`, { method: 'POST' })
-    //     .then(console.log("This was a favorited recipe, but now it isnt!"));
-
-    //   }
-    //   if (favorite == false) {
-    //     console.log("I clicked favorite")
-    //     fetch(`/api/users/${params.userId}/recipes/${recipeId}/add`, { method: 'POST' })
-    //     .then(console.log("This was not a favorited recipe. Now it is!"));
-    //   }
-
     setFavorite((favorite) => {
       if (favorite === true) {
         const jsonData = localStorage.getItem("zeply-favs");
@@ -69,9 +50,6 @@ function SetStateAndToggle({ params }) {
           1
         );
         localStorage.setItem("zeply-favs", JSON.stringify(data));
-        console.log(data);
-        console.log("This was a favorited recipe, but now it isnt!");
-        console.log(params);
       }
       if (favorite === false) {
         const jsonData = localStorage.getItem("zeply-favs");
@@ -83,15 +61,15 @@ function SetStateAndToggle({ params }) {
           date: date.toString(),
         };
         if (data) {
-          console.log("data");
           data.push(newElement);
           localStorage.setItem("zeply-favs", JSON.stringify(data));
         } else {
           localStorage.setItem("zeply-favs", JSON.stringify([newElement]));
         }
-        console.log("gaurdadno");
-        console.log(data);
-        console.log("This was not a favorited recipe. Now it is!");
+      }
+
+      if (favorite === false) {
+        setMessage("Subscribed to the address " + params.hash);
       }
 
       return !favorite;
@@ -99,8 +77,19 @@ function SetStateAndToggle({ params }) {
   };
 
   return (
-    <button className="btn-fav" onClick={() => toggleFavorite(params)}>
-      {favorite === true ? currentlyAFavorite : notCurrentlyAFavorite}
-    </button>
+    <div>
+      {message !== "" ? (
+        <FlashMessage duration={4000} persistOnHover={true}>
+          <div class="alert alert-info alert-fav" role="alert">
+            {message}
+          </div>
+        </FlashMessage>
+      ) : (
+        <div></div>
+      )}
+      <button className="btn-fav" onClick={() => toggleFavorite(params)}>
+        {favorite === true ? currentlyAFavorite : notCurrentlyAFavorite}
+      </button>
+    </div>
   );
 }

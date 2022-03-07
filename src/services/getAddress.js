@@ -1,5 +1,5 @@
-// const apiURL = "https://blockchain.info/rawaddr";
 const apiURL = "https://api.blockcypher.com/v1/btc/main/addrs";
+// const apiURL = "https://blockchain.info/rawaddr";
 
 export default function getAddress(addr) {
   const url = apiURL + `/${addr}/balance`;
@@ -7,8 +7,6 @@ export default function getAddress(addr) {
     .then((res) => res.json())
     .then((response) => {
       const data = response;
-      console.log(data);
       return { isLoading: false, data: data };
     });
 }
-// TODO: AGREGAR CATCH PARA SACAR LOS DIFF ERRORES NO SIEMPRE TRAE LA MISMA ESTRUCTURA

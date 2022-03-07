@@ -195,6 +195,12 @@ body * {
   width: 50%;
 }
 
+.alert-fav {
+  position: absolute;
+  width: 80vw;
+  text-align: center;
+}
+
 .btn-fav {
   background-color: #ffffff00;
   width: auto;

@@ -1,15 +1,16 @@
 import { useEffect, useState, useContext } from "react";
-import CurrencyContext from "../context/CurrencyContext";
+import AppContext from "../context/AppContext";
 import Spinner from "./Spinner";
 import Search from "./Search";
 import FavoriteButton from "../components/FavoriteButton";
 import getTran from "../services/getTran";
 import getTransAddr from "../services/getTransAddr";
 import calcPrice, { formatDate } from "../services/tools";
+import setVisit from "../services/setVisit";
 
 export default function Trans({ params }) {
   const [resp, setTx] = useState({ isLoading: true, data: [] });
-  const { currency } = useContext(CurrencyContext);
+  const { currency } = useContext(AppContext);
 
   let onlyTran = false;
 
@@ -25,6 +26,7 @@ export default function Trans({ params }) {
     function () {
       if (params.hash) {
         getTran(params.hash).then((resp) => setTx(resp));
+        setVisit(params.hash, "T");
       } else {
         getTransAddr(params.addr).then((resp) => setTx(resp));
       }

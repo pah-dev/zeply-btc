@@ -6,13 +6,13 @@ import Home from "./components/Home";
 import Trans from "./components/Trans";
 import Address from "./components/Address";
 import Footer from "./components/Footer";
-import FavoriteButton from "./components/FavoriteButton";
-import { CurrencyProvider } from "./context/CurrencyContext";
+import { AppProvider } from "./context/AppContext";
+import AddressTop from "./components/AddressTop";
 
 function App() {
   return (
     <div className="app">
-      <CurrencyProvider>
+      <AppProvider>
         <section className="app-content">
           <Header />
           <Switch>
@@ -20,11 +20,11 @@ function App() {
             <Route component={Address} path="/address/:hash"></Route>
             <Route component={Trans} path="/transactions/:addr"></Route>
             <Route component={Trans} path="/transaction/:hash"></Route>
-            <Route component={FavoriteButton} path="/foo"></Route>
+            <Route component={AddressTop} path="/foo"></Route>
           </Switch>
         </section>
         <Footer />
-      </CurrencyProvider>
+      </AppProvider>
     </div>
   );
 }

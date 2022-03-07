@@ -23,14 +23,16 @@ export default function TransFav() {
           <div className="card bg-dark border-info address-card">
             <div className="card-body">
               <table>
-                {data.map((txs) => (
-                  <tr>
-                    <td className="fav-line">
-                      {">  "}
-                      <a href={`/transaction/${txs.hash}`}>{txs.hash}</a>
-                    </td>
-                  </tr>
-                ))}
+                <tbody>
+                  {data.map((txs) => (
+                    <tr>
+                      <td className="fav-line">
+                        {">  "}
+                        <a href={`/transaction/${txs.hash}`}>{txs.hash}</a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
               </table>
             </div>
           </div>

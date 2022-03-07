@@ -1,19 +1,21 @@
 import { useEffect, useState, useContext } from "react";
-import CurrencyContext from "../context/CurrencyContext";
+import AppContext from "../context/AppContext";
 import Search from "./Search";
 import Spinner from "./Spinner";
 import FavoriteButton from "../components/FavoriteButton";
 import getAddress from "../services/getAddress";
 import calcPrice from "../services/tools";
+import setVisit from "../services/setVisit";
 
 export default function Address({ params }) {
   const [resp, setAddress] = useState([{ isLoading: true, data: [] }]);
-  const { currency } = useContext(CurrencyContext);
+  const { currency } = useContext(AppContext);
   const paramsFav = { hash: params.hash, type: "A" };
 
   useEffect(
     function () {
       getAddress(params.hash).then((resp) => setAddress(resp));
+      setVisit(params.hash, "A");
     },
     [params]
   );

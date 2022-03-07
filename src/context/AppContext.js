@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Context = React.createContext({});
 
-export function CurrencyProvider({ children }) {
+export function AppProvider({ children }) {
   const [currency, setCurrency] = useState({
     id: "BTC",
     name: "BTC",

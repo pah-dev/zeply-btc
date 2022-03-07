@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import getFavs from "../services/getFavs";
+import getTop from "../services/getTop";
 
-export default function AddressFav() {
+export default function AddressTop() {
   const [data, setAddress] = useState([]);
 
   useEffect(function () {
-    const resp = getFavs("A");
-    setAddress(resp);
+    getTop("A").then((resp) => setAddress(resp));
   }, []);
 
   return (
@@ -14,7 +13,7 @@ export default function AddressFav() {
       {data.length > 0 ? (
         <section className="form-address-content">
           <div className="separator"></div>
-          <div className="search-title">Favorite Addresses</div>
+          <div className="search-title">Top 5 searched Addresses</div>
           <div className="card bg-dark border-info address-card">
             <div className="card-body">
               <table>

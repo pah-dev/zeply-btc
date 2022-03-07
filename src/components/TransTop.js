@@ -1,29 +1,28 @@
 import { useState, useEffect } from "react";
-import getFavs from "../services/getFavs";
+import getTop from "../services/getTop";
 
-export default function AddressFav() {
-  const [data, setAddress] = useState([]);
+export default function TransTop() {
+  const [data, setTrans] = useState([]);
 
   useEffect(function () {
-    const resp = getFavs("A");
-    setAddress(resp);
+    getTop("T").then((resp) => setTrans(resp));
   }, []);
 
   return (
-    <div data-testid="address-fav-element" className="search">
+    <div data-testid="trans-fav-element" className="search">
       {data.length > 0 ? (
         <section className="form-address-content">
           <div className="separator"></div>
-          <div className="search-title">Favorite Addresses</div>
+          <div className="search-title">Top 5 searched Transactions</div>
           <div className="card bg-dark border-info address-card">
             <div className="card-body">
               <table>
                 <tbody>
-                  {data.map((addr) => (
+                  {data.map((txs) => (
                     <tr>
                       <td className="fav-line">
                         {">  "}
-                        <a href={`/address/${addr.hash}`}>{addr.hash}</a>
+                        <a href={`/transaction/${txs.hash}`}>{txs.hash}</a>
                       </td>
                     </tr>
                   ))}

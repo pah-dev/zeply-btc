@@ -4,7 +4,6 @@ export default function getFavs(key) {
   let newData = [];
   if (data) {
     newData = data.filter((e) => e.type === key);
-    console.log(newData);
   }
   return newData;
 }

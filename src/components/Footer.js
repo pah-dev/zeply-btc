@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap";
-import CurrencyContext from "../context/CurrencyContext";
+import AppContext from "../context/AppContext";
 import getTicker from "../services/getTicker";
 
 export default function Footer() {
-  const { currency, saveCurrency } = useContext(CurrencyContext);
+  const { currency, saveCurrency } = useContext(AppContext);
 
   const currencies = [
     {
